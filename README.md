@@ -1,6 +1,6 @@
 # API GoBarber 
 
-:star: API desenvolvida com Typescript + SOLID + DDD + Postgres + TypeOrm
+:star: API desenvolvida com Typescript + SOLID + DDD + Docker + Postgres + TypeOrm
 
 :arrow_right: Status: Development :warning:
 
