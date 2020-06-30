@@ -19,3 +19,9 @@ Entre na pasta do projeto
 Instale as dependências do projeto
 
 `yarn` ou `npm install`
+
+Execute aplicação
+
+`yarn dev:server` ou `npm start dev:server`
+
+Pronto, agora é possível conectar API utilizando [LocalHost](http://localhost:3333 "API GoBarber") na porta 3333.
