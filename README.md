@@ -38,7 +38,21 @@ Pronto, agora é possível conectar API utilizando [LocalHost](http://localhost:
 
 ```
 {
-	"provider": "Ítalo Lima",
+	"provider_id": "fd8edb9d-e4db-437f-8e79-188d9971bd4c",
 	"date": "2020-07-01T03:00:00"
+}
+```
+
+## Users 
+
+`POST /users` - Cria um novo usuário.
+
+#### Body example:
+
+```
+{
+	"name": "Ítalo",
+	"email": "italo@email.com",
+	"password": "123456"
 }
 ```
