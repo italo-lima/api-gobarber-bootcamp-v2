@@ -25,3 +25,20 @@ Execute aplicação
 `yarn dev:server` ou `npm start dev:server`
 
 Pronto, agora é possível conectar API utilizando [LocalHost](http://localhost:3333 "API GoBarber") na porta 3333.
+
+# :twisted_rightwards_arrows: Rotas da Aplicação
+
+## Appointments 
+
+`GET /appointments` - Retorna todos os appointments cadastrado.
+
+`POST /appointments` - Cria um novo appointment.
+
+#### Body example:
+
+```
+{
+	"provider": "Ítalo Lima",
+	"date": "2020-07-01T03:00:00"
+}
+```
