@@ -30,7 +30,7 @@ Pronto, agora é possível conectar API utilizando [LocalHost](http://localhost:
 
 ## Users 
 
-`POST /users` - Cria um novo usuário.
+:paperclip: `POST /users` - Cria um novo usuário.
 
 #### Body example:
 
@@ -56,13 +56,13 @@ Pronto, agora é possível conectar API utilizando [LocalHost](http://localhost:
 
 ## Appointments 
 
-`GET /appointments` - Retorna todos os appointments cadastrado.
+:paperclip: `GET /appointments` - Retorna todos os appointments cadastrado.
 
 #### Body response:
 
 ``` [Appointments] || {} ```
 
-`POST /appointments` - Cria um novo appointment.
+:paperclip: `POST /appointments` - Cria um novo appointment.
 
 #### Body example:
 
@@ -87,7 +87,7 @@ Pronto, agora é possível conectar API utilizando [LocalHost](http://localhost:
 
 ## Authentication
 
-`POST /users` - Cria uma seção para um usuário.
+:paperclip: `POST /users` - Cria uma seção para um usuário.
 
 #### Body example:
 
