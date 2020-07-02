@@ -28,9 +28,39 @@ Pronto, agora é possível conectar API utilizando [LocalHost](http://localhost:
 
 # :twisted_rightwards_arrows: Rotas da Aplicação
 
+## Users 
+
+`POST /users` - Cria um novo usuário.
+
+#### Body example:
+
+```
+{
+	"name": "Ítalo",
+	"email": "italo@email.com",
+	"password": "123456"
+}
+```
+
+#### Body response:
+
+```
+{
+  "id": uuid,
+	"name": string,
+	"email": string,
+	"created_at": Date,
+  "updated_at": Date
+}
+```
+
 ## Appointments 
 
 `GET /appointments` - Retorna todos os appointments cadastrado.
+
+#### Body response:
+
+``` [Appointments] || {} ```
 
 `POST /appointments` - Cria um novo appointment.
 
@@ -43,16 +73,36 @@ Pronto, agora é possível conectar API utilizando [LocalHost](http://localhost:
 }
 ```
 
-## Users 
+#### Body response:
 
-`POST /users` - Cria um novo usuário.
+```
+{
+  "provider_id": uuid,
+	"date": Date,
+	"id": uuid,
+  "created_at": Date,
+  "updated_at": Date
+}
+```
+
+## Authentication
+
+`POST /users` - Cria uma seção para um usuário.
 
 #### Body example:
 
 ```
 {
-	"name": "Ítalo",
 	"email": "italo@email.com",
 	"password": "123456"
+}
+```
+
+#### Body response:
+
+```
+{
+  "user": object,
+	"token": string
 }
 ```
