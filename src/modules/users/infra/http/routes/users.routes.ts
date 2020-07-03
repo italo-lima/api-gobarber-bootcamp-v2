@@ -1,9 +1,9 @@
 import { Router, request } from 'express';
 
-import CreateUserService from '../services/CreateUserService';
-import verifyAuthentication from '../middlewares/verifyAuthentication';
-import UpdateUserAvatarService from '../services/UpdateUserAvatarService';
-import fileUpload from '../config/upload';
+import CreateUserService from '@modules/users/services/CreateUserService';
+import UpdateUserAvatarService from '@modules/users/services/UpdateUserAvatarService';
+import verifyAuthentication from '@modules/users/infra/http/middlewares/verifyAuthentication';
+import fileUpload from '@config/upload';
 
 const usersRoutes = Router();
 
