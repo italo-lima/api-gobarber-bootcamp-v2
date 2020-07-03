@@ -54,6 +54,28 @@ Pronto, agora é possível conectar API utilizando [LocalHost](http://localhost:
 }
 ```
 
+## Authentication
+
+:paperclip: `POST /users` - Cria uma seção para um usuário.
+
+#### Body example:
+
+```
+{
+	"email": "italo@email.com",
+	"password": "123456"
+}
+```
+
+#### Body response:
+
+```
+{
+  "user": object,
+	"token": string
+}
+```
+
 ## Appointments 
 
 :paperclip: `GET /appointments` - Retorna todos os appointments cadastrado.
@@ -82,27 +104,5 @@ Pronto, agora é possível conectar API utilizando [LocalHost](http://localhost:
 	"id": uuid,
   "created_at": Date,
   "updated_at": Date
-}
-```
-
-## Authentication
-
-:paperclip: `POST /users` - Cria uma seção para um usuário.
-
-#### Body example:
-
-```
-{
-	"email": "italo@email.com",
-	"password": "123456"
-}
-```
-
-#### Body response:
-
-```
-{
-  "user": object,
-	"token": string
 }
 ```
