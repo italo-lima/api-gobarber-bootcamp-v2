@@ -8,17 +8,13 @@ import fileUpload from '../config/upload';
 const usersRoutes = Router();
 
 usersRoutes.post('/', async (req, res) => {
-  try {
-    const { name, email, password } = req.body;
+  const { name, email, password } = req.body;
 
-    const userService = new CreateUserService();
+  const userService = new CreateUserService();
 
-    const user = await userService.execute({ name, email, password });
+  const user = await userService.execute({ name, email, password });
 
-    return res.json(user);
-  } catch (err) {
-    return res.status(400).json({ err: err.message });
-  }
+  return res.json(user);
 });
 
 usersRoutes.patch(
@@ -26,20 +22,16 @@ usersRoutes.patch(
   verifyAuthentication,
   fileUpload.single('avatar'),
   async (req, res) => {
-    try {
-      const updateUserAvatar = new UpdateUserAvatarService();
+    const updateUserAvatar = new UpdateUserAvatarService();
 
-      const user = await updateUserAvatar.execute({
-        user_id: req.user.id,
-        avatarFileName: req.file.filename,
-      });
+    const user = await updateUserAvatar.execute({
+      user_id: req.user.id,
+      avatarFileName: req.file.filename,
+    });
 
-      delete user.password;
+    delete user.password;
 
-      return res.json(user);
-    } catch (err) {
-      return res.status(401).json({ error: err.message });
-    }
+    return res.json(user);
   },
 );
 
