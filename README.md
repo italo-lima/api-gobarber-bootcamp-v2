@@ -47,9 +47,9 @@ Pronto, agora é possível conectar API utilizando [LocalHost](http://localhost:
 ```
 {
   "id": uuid,
-	"name": string,
-	"email": string,
-	"created_at": Date,
+  "name": string,
+  "email": string,
+  "created_at": Date,
   "updated_at": Date
 }
 ```
@@ -72,9 +72,11 @@ Pronto, agora é possível conectar API utilizando [LocalHost](http://localhost:
 ```
 {
   "user": object,
-	"token": string
+  "token": string
 }
 ```
+
+### :warning:	As rotas a seguir, necessitam que usuário esteja autenticado.
 
 ## Appointments 
 
@@ -100,8 +102,8 @@ Pronto, agora é possível conectar API utilizando [LocalHost](http://localhost:
 ```
 {
   "provider_id": uuid,
-	"date": Date,
-	"id": uuid,
+  "date": Date,
+  "id": uuid,
   "created_at": Date,
   "updated_at": Date
 }
