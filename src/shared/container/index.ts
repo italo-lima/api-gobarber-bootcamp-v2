@@ -2,6 +2,7 @@
 import { container } from 'tsyringe';
 
 import '@modules/users/providers/HashProvider'; // Adicionando injeção do hashProvider
+import '@shared/container/providers/index'; // Adicionando injeção do DiskStorageProvider
 
 import IAppointmentRepository from '@modules/appointments/repositories/IAppointmentRepository';
 import AppointmentRepository from '@modules/appointments/infra/typeorm/repositories/AppointmentsRepository';

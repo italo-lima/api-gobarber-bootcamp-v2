@@ -1,4 +1,4 @@
-import FakeUsersRepsitory from '../repositories/fakes/FakeUsersRepsitory';
+import FakeUsersRepository from '../repositories/fakes/FakeUsersRepository';
 import FakeHashProvider from '../providers/HashProvider/fakes/FakeHashProvider';
 import AuthenticatedUserService from './AuthenticatedUserService';
 import CreateUserService from './CreateUserService';
@@ -7,16 +7,16 @@ import AppError from '@shared/errors/AppError';
 
 describe('Authenticared User', () => {
   it('should be able to authenticated', async () => {
-    const fakeUsersRepsitory = new FakeUsersRepsitory();
+    const fakeUsersRepository = new FakeUsersRepository();
     const fakeHashProvider = new FakeHashProvider();
 
     const createUserService = new CreateUserService(
-      fakeUsersRepsitory,
+      fakeUsersRepository,
       fakeHashProvider,
     );
 
     const authenticatedUserService = new AuthenticatedUserService(
-      fakeUsersRepsitory,
+      fakeUsersRepository,
       fakeHashProvider,
     );
 
@@ -36,11 +36,11 @@ describe('Authenticared User', () => {
   });
 
   it('should not be able authenticated with non existing user', async () => {
-    const fakeUsersRepsitory = new FakeUsersRepsitory();
+    const fakeUsersRepository = new FakeUsersRepository();
     const fakeHashProvider = new FakeHashProvider();
 
     const authenticatedUserService = new AuthenticatedUserService(
-      fakeUsersRepsitory,
+      fakeUsersRepository,
       fakeHashProvider,
     );
 
@@ -53,16 +53,16 @@ describe('Authenticared User', () => {
   });
 
   it('should not be able to authenticated with wrong password', async () => {
-    const fakeUsersRepsitory = new FakeUsersRepsitory();
+    const fakeUsersRepository = new FakeUsersRepository();
     const fakeHashProvider = new FakeHashProvider();
 
     const createUserService = new CreateUserService(
-      fakeUsersRepsitory,
+      fakeUsersRepository,
       fakeHashProvider,
     );
 
     const authenticatedUserService = new AuthenticatedUserService(
-      fakeUsersRepsitory,
+      fakeUsersRepository,
       fakeHashProvider,
     );
 
