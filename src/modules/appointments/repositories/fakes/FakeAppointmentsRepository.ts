@@ -6,7 +6,7 @@ import ICreateAppointmentDTO from '@modules/appointments/dtos/ICreateAppointment
 
 import Appointment from '@modules/appointments/infra/typeorm/entities/Appointment';
 
-class AppointmentRepository implements IAppointmentRepository {
+class FakeAppointmentRepository implements IAppointmentRepository {
   private appointments: Appointment[] = [];
 
   public async findByDate(date: Date): Promise<Appointment | undefined> {
@@ -30,4 +30,4 @@ class AppointmentRepository implements IAppointmentRepository {
   }
 }
 
-export default AppointmentRepository;
+export default FakeAppointmentRepository;
