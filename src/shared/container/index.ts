@@ -10,6 +10,9 @@ import AppointmentRepository from '@modules/appointments/infra/typeorm/repositor
 import IUsersRepository from '@modules/users/repositories/IUsersRepository';
 import UserRepository from '@modules/users/infra/typeorm/repositories/UserRepository';
 
+import IUserTokensRepository from '@modules/users/repositories/IUserTokensRepository';
+import UserTokensRepository from '@modules/users/infra/typeorm/repositories/UserTokensRepository';
+
 // registra a passagem desse repositório ao chamar a key AppointmentRepository
 container.registerSingleton<IAppointmentRepository>(
   'AppointmentRepository',
@@ -17,3 +20,8 @@ container.registerSingleton<IAppointmentRepository>(
 );
 
 container.registerSingleton<IUsersRepository>('UserRepository', UserRepository);
+
+container.registerSingleton<IUserTokensRepository>(
+  'UserTokensRepository',
+  UserTokensRepository,
+);
