@@ -38,7 +38,8 @@ Módulo        | Rota                   |    Tipo     |  Autenticação?     | D
 | Usuário     | /profile               |  PUT        | :heavy_check_mark: | Atualiza informações do usuário logado (email, password,name)|
 | Usuário     | /sessions              |  POST       |    :x:             | Cria uma sessão para um usuário                              |
 | Agendamento | /appointments          |  POST       | :heavy_check_mark: | Cria um agendamento para usuário logado                      |
-| Agendamento     | /appointments      |  GET        | :heavy_check_mark: | Retorna todos agendamentos realizados                        |
+| Agendamento | /appointments          |  GET        | :heavy_check_mark: | Retorna todos agendamentos realizados                        |
+| Provedores  | /providers             |  GET        | :heavy_check_mark: | Retorna todos provedores de serviço exceto usuário logado    |
 
 # :twisted_rightwards_arrows: Rotas da Aplicação
 
@@ -205,3 +206,11 @@ Envio do tipo MultiPart
   "updated_at": Date
 }
 ```
+
+## Providers 
+
+:paperclip: `GET /providers`.
+
+#### Body response:
+
+``` Appointments[] || [] ```
