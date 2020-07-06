@@ -10,7 +10,7 @@ interface TokenPayload {
   sub: string;
 }
 
-export default function verufyAuthentication(
+export default function verifyAuthentication(
   req: Request,
   res: Response,
   next: NextFunction,

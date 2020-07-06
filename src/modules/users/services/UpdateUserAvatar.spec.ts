@@ -3,15 +3,21 @@ import FakeDiskStorageProvider from '@shared/container/providers/StorageProvider
 import UpdateUserService from './UpdateUserAvatarService';
 import AppError from '@shared/errors/AppError';
 
+let fakeUsersRepository: FakeUsersRepository;
+let diskStorageProvider: FakeDiskStorageProvider;
+let updateStorageService: UpdateUserService;
+
 describe('UpdateUserAvatar', () => {
-  it('should be able to update user avatar ', async () => {
-    const fakeUsersRepository = new FakeUsersRepository();
-    const diskStorageProvider = new FakeDiskStorageProvider();
-    const updateStorageService = new UpdateUserService(
+  beforeEach(() => {
+    fakeUsersRepository = new FakeUsersRepository();
+    diskStorageProvider = new FakeDiskStorageProvider();
+    updateStorageService = new UpdateUserService(
       fakeUsersRepository,
       diskStorageProvider,
     );
+  });
 
+  it('should be able to update user avatar ', async () => {
     const user = await fakeUsersRepository.create({
       name: 'John Doe',
       email: 'john@email.com',
@@ -27,13 +33,6 @@ describe('UpdateUserAvatar', () => {
   });
 
   it('should not be able to update user avatar from non existing user', async () => {
-    const fakeUsersRepository = new FakeUsersRepository();
-    const diskStorageProvider = new FakeDiskStorageProvider();
-    const updateStorageService = new UpdateUserService(
-      fakeUsersRepository,
-      diskStorageProvider,
-    );
-
     await expect(
       updateStorageService.execute({
         user_id: 'non-existing-user',
@@ -43,9 +42,6 @@ describe('UpdateUserAvatar', () => {
   });
 
   it('should delete old avatar when updating new one', async () => {
-    const fakeUsersRepository = new FakeUsersRepository();
-    const diskStorageProvider = new FakeDiskStorageProvider();
-
     //espionando a função deleteFile, para verificar se ela executou
     const deleteFile = jest.spyOn(diskStorageProvider, 'deleteFile');
 
