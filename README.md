@@ -26,11 +26,47 @@ Execute aplicação
 
 Pronto, agora é possível conectar API utilizando [LocalHost](http://localhost:3333 "API GoBarber") na porta 3333.
 
+# :page_facing_up: Tabela de descrição das rotas
+
+Módulo        | Rota                   |    Tipo     |  Autenticação?     | Descrição                                                    |
+|:-----------:|:----------------------:|:-----------:|:------------------:|:------------------------------------------------------------:|
+| Usuário     | /users                 |  POST       |    :x:             | Cria um novo usuário                                         |
+| Usuário     | /users/password/forgot |  POST       |    :x:             | Solicita recuperação por email                               |
+| Usuário     | /users/password/reset  |  POST       |    :x:             | Realiza atualização da senha com token recebido no e-mail    |
+| Usuário     | /users/avatar          |  PATCH      | :heavy_check_mark: | Atualiza o avatar do usuário                                 |
+| Usuário     | /profile               |  GET        | :heavy_check_mark: | Retorna informações do usuário logado                        |
+| Usuário     | /profile               |  PUT        | :heavy_check_mark: | Atualiza informações do usuário logado (email, password,name)|
+| Usuário     | /sessions              |  POST       |    :x:             | Cria uma sessão para um usuário                              |
+| Agendamento | /appointments          |  POST       | :heavy_check_mark: | Cria um agendamento para usuário logado                      |
+| Agendamento     | /appointments      |  GET        | :heavy_check_mark: | Retorna todos agendamentos realizados                        |
+
 # :twisted_rightwards_arrows: Rotas da Aplicação
+
+## Authentication
+
+:paperclip: `POST /sessions`.
+
+#### Body example:
+
+```
+{
+	"email": "italo@email.com",
+	"password": "123456"
+}
+```
+
+#### Body response:
+
+```
+{
+  "user": object,
+  "token": string
+}
+```
 
 ## Users 
 
-:paperclip: `POST /users` - Cria um novo usuário.
+:paperclip: `POST /users`.
 
 #### Body example:
 
@@ -54,16 +90,76 @@ Pronto, agora é possível conectar API utilizando [LocalHost](http://localhost:
 }
 ```
 
-## Authentication
+:paperclip: `PATCH /users/avatar`.
 
-:paperclip: `POST /users` - Cria uma seção para um usuário.
+#### Body example:
+
+```
+Envio do tipo MultiPart
+
+"avatar": "photo.png",
+```
+
+#### Body response:
+
+```
+{
+  "id": uuid,
+  "name": string,
+  "email": string,
+  "avatar": string,
+  "created_at": Date,
+  "updated_at": Date
+}
+```
+
+:paperclip: `POST /password/forgot`.
 
 #### Body example:
 
 ```
 {
-	"email": "italo@email.com",
-	"password": "123456"
+	"email": "italojonas@hotmail.com"
+}
+```
+
+:paperclip: `POST /password/reset`.
+
+#### Body example:
+
+```
+{
+	"password": "123123",
+	"token": "ac8eej9d-e4db-437f-8e79-188d9971bc8e"
+}
+```
+
+## Perfil 
+
+:paperclip: `GET /profile`.
+
+#### Body example:
+
+```
+{
+	"id": uuid,
+  "name": string,
+  "email": string,
+  "avatar": string,
+  "created_at": Date,
+  "updated_at": Date
+}
+```
+
+:paperclip: `PUT /profile`.
+
+#### Body example:
+
+```
+{
+	"name": "Ítalo",
+	"password": "123456",
+	"old_password": "123123"
 }
 ```
 
@@ -71,22 +167,23 @@ Pronto, agora é possível conectar API utilizando [LocalHost](http://localhost:
 
 ```
 {
-  "user": object,
-  "token": string
+  "id": uuid,
+  "name": string,
+  "avatar": string,
+  "created_at": Date,
+  "updated_at": Date
 }
 ```
 
-### :warning:	As rotas a seguir, necessitam que usuário esteja autenticado.
-
 ## Appointments 
 
-:paperclip: `GET /appointments` - Retorna todos os appointments cadastrado.
+:paperclip: `GET /appointments`.
 
 #### Body response:
 
-``` [Appointments] || {} ```
+``` Appointments[] || {} ```
 
-:paperclip: `POST /appointments` - Cria um novo appointment.
+:paperclip: `POST /appointments`.
 
 #### Body example:
 
