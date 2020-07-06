@@ -50,8 +50,8 @@ Módulo        | Rota                   |    Tipo     |  Autenticação?     | D
 
 ```
 {
-	"email": "italo@email.com",
-	"password": "123456"
+  "email": "italo@email.com",
+  "password": "123456"
 }
 ```
 
@@ -72,9 +72,9 @@ Módulo        | Rota                   |    Tipo     |  Autenticação?     | D
 
 ```
 {
-	"name": "Ítalo",
-	"email": "italo@email.com",
-	"password": "123456"
+  "name": "Ítalo",
+  "email": "italo@email.com",
+  "password": "123456"
 }
 ```
 
@@ -119,7 +119,7 @@ Envio do tipo MultiPart
 
 ```
 {
-	"email": "italojonas@hotmail.com"
+  "email": "italojonas@hotmail.com"
 }
 ```
 
@@ -129,8 +129,8 @@ Envio do tipo MultiPart
 
 ```
 {
-	"password": "123123",
-	"token": "ac8eej9d-e4db-437f-8e79-188d9971bc8e"
+  "password": "123123",
+  "token": "ac8eej9d-e4db-437f-8e79-188d9971bc8e"
 }
 ```
 
@@ -142,7 +142,7 @@ Envio do tipo MultiPart
 
 ```
 {
-	"id": uuid,
+  "id": uuid,
   "name": string,
   "email": string,
   "avatar": string,
@@ -157,9 +157,9 @@ Envio do tipo MultiPart
 
 ```
 {
-	"name": "Ítalo",
-	"password": "123456",
-	"old_password": "123123"
+  "name": "Ítalo",
+  "password": "123456",
+  "old_password": "123123"
 }
 ```
 
@@ -189,8 +189,8 @@ Envio do tipo MultiPart
 
 ```
 {
-	"provider_id": "fd8edb9d-e4db-437f-8e79-188d9971bd4c",
-	"date": "2020-07-01T03:00:00"
+  "provider_id": "fd8edb9d-e4db-437f-8e79-188d9971bd4c",
+  "date": "2020-07-01T03:00:00"
 }
 ```
 
