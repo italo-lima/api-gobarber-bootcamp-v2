@@ -14,6 +14,8 @@ export default class ProfileController {
       user_id,
     });
 
+    delete user.password;
+
     return res.json(user);
   }
   public async update(req: Request, res: Response): Promise<Response> {
