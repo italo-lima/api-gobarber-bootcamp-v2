@@ -7,14 +7,16 @@ import CreateAppointmentService from '@modules/appointments/services/CreateAppoi
 export default class AppointmentsController {
   public async create(req: Request, res: Response): Promise<Response> {
     const { date, provider_id } = req.body;
+    const user_id = req.user.id;
 
     const parsedDate = parseISO(date);
 
     const createAppointment = container.resolve(CreateAppointmentService); // para injeção de dependência funcionar
 
     const appointment = await createAppointment.execute({
-      date: parsedDate,
       provider_id,
+      user_id,
+      date: parsedDate,
     });
 
     return res.json(appointment);
