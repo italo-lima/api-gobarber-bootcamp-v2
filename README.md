@@ -28,18 +28,20 @@ Pronto, agora é possível conectar API utilizando [LocalHost](http://localhost:
 
 # :page_facing_up: Tabela de descrição das rotas
 
-Módulo        | Rota                   |    Tipo     |  Autenticação?     | Descrição                                                    |
-|:-----------:|:----------------------:|:-----------:|:------------------:|:------------------------------------------------------------:|
-| Usuário     | /users                 |  POST       |    :x:             | Cria um novo usuário                                         |
-| Usuário     | /users/password/forgot |  POST       |    :x:             | Solicita recuperação por email                               |
-| Usuário     | /users/password/reset  |  POST       |    :x:             | Realiza atualização da senha com token recebido no e-mail    |
-| Usuário     | /users/avatar          |  PATCH      | :heavy_check_mark: | Atualiza o avatar do usuário                                 |
-| Usuário     | /profile               |  GET        | :heavy_check_mark: | Retorna informações do usuário logado                        |
-| Usuário     | /profile               |  PUT        | :heavy_check_mark: | Atualiza informações do usuário logado (email, password,name)|
-| Usuário     | /sessions              |  POST       |    :x:             | Cria uma sessão para um usuário                              |
-| Agendamento | /appointments          |  POST       | :heavy_check_mark: | Cria um agendamento para usuário logado                      |
-| Agendamento | /appointments          |  GET        | :heavy_check_mark: | Retorna todos agendamentos realizados                        |
-| Provedores  | /providers             |  GET        | :heavy_check_mark: | Retorna todos provedores de serviço exceto usuário logado    |
+| Módulo      | Rota                                      |    Tipo     |  Autenticação?     | Descrição                                                    |
+|:-----------:|:-----------------------------------------:|:-----------:|:------------------:|:------------------------------------------------------------:|
+| Usuário     | /users                                    |  POST       |    :x:             | Cria um novo usuário                                         |
+| Usuário     | /users/password/forgot                    |  POST       |    :x:             | Solicita recuperação por email                               |
+| Usuário     | /users/password/reset                     |  POST       |    :x:             | Realiza atualização da senha com token recebido no e-mail    |
+| Usuário     | /users/avatar                             |  PATCH      | :heavy_check_mark: | Atualiza o avatar do usuário                                 |
+| Usuário     | /profile                                  |  GET        | :heavy_check_mark: | Retorna informações do usuário logado                        |
+| Usuário     | /profile                                  |  PUT        | :heavy_check_mark: | Atualiza informações do usuário logado (email, password,name)|
+| Usuário     | /sessions                                 |  POST       |    :x:             | Cria uma sessão para um usuário                              |
+| Agendamento | /appointments                             |  POST       | :heavy_check_mark: | Cria um agendamento para usuário logado                      |
+| Agendamento | /appointments/me                          |  GET        | :heavy_check_mark: | Retorna todos agendamentos do prestador logado               |
+| Provedores  | /providers                                |  GET        | :heavy_check_mark: | Retorna todos provedores de serviço exceto usuário logado    |
+| Provedores  | /providers/provider_id/month-availability |  GET        | :heavy_check_mark: | Retorna os dias do mês com vagas para serviço                |
+| Provedores  | /providers/provider_id/day-availability   |  GET        | :heavy_check_mark: | Retorna os horários do dia com vagas para serviço            |
 
 # :twisted_rightwards_arrows: Rotas da Aplicação
 
@@ -178,7 +180,7 @@ Envio do tipo MultiPart
 
 ## Appointments 
 
-:paperclip: `GET /appointments`.
+:paperclip: `GET /appointments/me`.
 
 #### Body response:
 
@@ -213,4 +215,63 @@ Envio do tipo MultiPart
 
 #### Body response:
 
-``` Appointments[] || [] ```
+``` User[] || [] ```
+
+:paperclip: `GET /providers/provider_id/month-availability`.
+
+#### Body example:
+
+```
+{
+  "year": 2020,
+  "month": 7
+}
+```
+
+#### Body response:
+
+``` 
+[
+  {
+    "day": 1,
+    "available": true
+  },
+  {
+    "day": 2,
+    "available": true
+  },
+  .
+  .
+  .
+ ]
+```
+
+:paperclip: `GET /providersprovider_id/day-availability`.
+
+#### Body example:
+
+```
+{
+  "year": 2020,
+  "month": 7,
+  "day": 7
+}
+```
+
+#### Body response:
+
+``` 
+[
+  {
+    "hour": 8,
+    "available": false
+  },
+  {
+    "hour": 9,
+    "available": false
+  },
+  .
+  .
+  .
+ ]
+```
