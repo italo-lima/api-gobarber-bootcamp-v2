@@ -4,6 +4,7 @@ import { getRepository, Repository, Raw } from 'typeorm';
 import IAppointmentRepository from '@modules/appointments/repositories/IAppointmentRepository';
 import ICreateAppointmentDTO from '@modules/appointments/dtos/ICreateAppointmentDTO';
 import IFindAllMonthFromProviderDTO from '@modules/appointments/dtos/IFindAllMonthFromProviderDTO';
+import IFindAllDayFromProviderDTO from '@modules/appointments/dtos/IFindAllDayFromProviderDTO';
 
 import Appointment from '@modules/appointments/infra/typeorm/entities/Appointment';
 
@@ -48,6 +49,31 @@ class AppointmentRepository implements IAppointmentRepository {
           dateFieldName =>
             //to_char converte qualquer coisa para string
             `to_char(${dateFieldName}, 'MM-YYYY') = '${parsedMonth}-${year}'`,
+        ),
+      },
+    });
+
+    return appointments;
+  }
+
+  public async findAllInDayProvider({
+    provider_id,
+    day,
+    month,
+    year,
+  }: IFindAllDayFromProviderDTO): Promise<Appointment[]> {
+    // padStar preenche um segundo digíto com 0, caso tenha apenas 1 casa o número
+    const parsedDay = String(day).padStart(2, '0');
+    const parsedMonth = String(month).padStart(2, '0');
+
+    const appointments = await this.ormRepository.find({
+      where: {
+        provider_id,
+        // dateFieldName representa o campo date dentro da base (no orm adiciona prefixos)
+        date: Raw(
+          dateFieldName =>
+            //to_char converte qualquer coisa para string
+            `to_char(${dateFieldName}, 'DD-MM-YYYY') = '${parsedDay}-${parsedMonth}-${year}'`,
         ),
       },
     });
