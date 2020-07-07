@@ -1,4 +1,5 @@
-import { createConnection } from 'typeorm';
+import { createConnections } from 'typeorm';
 
-//automaticamente irá procurar pelo arquivo ormconfig.json e fazer conexão com banco
-createConnection();
+/* automaticamente irá procurar pelo arquivo
+ormconfig.json e fazer conexão com banco postgres e mongo */
+createConnections();
