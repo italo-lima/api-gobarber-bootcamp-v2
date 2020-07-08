@@ -5,7 +5,7 @@ import express, { NextFunction, Request, Response } from 'express';
 import 'express-async-errors';
 import cors from 'cors';
 
-import { tmpFolder } from '@config/upload';
+import configUpload from '@config/upload';
 import { errors } from 'celebrate';
 import AppError from '@shared/errors/AppError';
 
@@ -19,7 +19,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-app.use('/files', express.static(tmpFolder));
+app.use('/files', express.static(configUpload.tmpFolder));
 
 app.use(routes);
 app.use(errors());

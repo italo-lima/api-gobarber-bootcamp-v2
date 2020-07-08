@@ -1,22 +1,22 @@
 import fs from 'fs';
 import path from 'path';
 
-import { tmpFolder, uploadsFolder } from '@config/upload';
+import configUpload from '@config/upload';
 import IStorageProvider from '@shared/container/providers/StorageProvider/models/IStorageProvider';
 
 export default class DiskStorageProvider implements IStorageProvider {
   public async saveFile(file: string): Promise<string> {
     //movendo arquivo da pasta tmp para tmp/uploads
     await fs.promises.rename(
-      path.resolve(tmpFolder, file),
-      path.resolve(uploadsFolder, file),
+      path.resolve(configUpload.tmpFolder, file),
+      path.resolve(configUpload.uploadsFolder, file),
     );
 
     return file;
   }
 
   public async deleteFile(file: string): Promise<void> {
-    const filePath = path.resolve(uploadsFolder, file);
+    const filePath = path.resolve(configUpload.uploadsFolder, file);
 
     try {
       // verificando se encontrou o arquivo

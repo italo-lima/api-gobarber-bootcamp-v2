@@ -4,11 +4,15 @@ import UsersController from '@modules/users/infra/http/controllers/UsersControll
 import AvatarController from '@modules/users/infra/http/controllers/AvatarController';
 
 import verifyAuthentication from '@modules/users/infra/http/middlewares/verifyAuthentication';
-import fileUpload from '@config/upload';
+import configUpload from '@config/upload';
+import multer from 'multer';
 
 import { createUser } from '@modules/users/infra/http/validations/users';
 
 const usersRoutes = Router();
+
+const fileUpload = multer(configUpload.multer);
+
 const usersController = new UsersController();
 const avatarController = new AvatarController();
 
