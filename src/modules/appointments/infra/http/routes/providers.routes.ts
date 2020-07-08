@@ -5,6 +5,8 @@ import ProvidersController from '@modules/appointments/infra/http/controllers/Pr
 import ProviderMonthAvailabilityController from '@modules/appointments/infra/http/controllers/ProviderMonthAvailabilityController';
 import ProviderDayAvailabilityController from '@modules/appointments/infra/http/controllers/ProviderDayAvailabilityController';
 
+import { providerAvailability } from '@modules/appointments/infra/http/validations/providers';
+
 const providersRoutes = Router();
 const providersController = new ProvidersController();
 const providerMonthAvailabilityController = new ProviderMonthAvailabilityController();
@@ -15,10 +17,12 @@ providersRoutes.use(verifyAuthentication);
 providersRoutes.get('/', providersController.index);
 providersRoutes.get(
   '/:provider_id/day-availability',
+  providerAvailability,
   providerDayAvailabilityController.index,
 );
 providersRoutes.get(
   '/:provider_id/month-availability',
+  providerAvailability,
   providerMonthAvailabilityController.index,
 );
 

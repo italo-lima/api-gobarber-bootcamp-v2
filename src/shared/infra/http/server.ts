@@ -1,10 +1,12 @@
 import 'reflect-metadata';
+import 'dotenv/config';
 
 import express, { NextFunction, Request, Response } from 'express';
 import 'express-async-errors';
 import cors from 'cors';
 
 import { tmpFolder } from '@config/upload';
+import { errors } from 'celebrate';
 import AppError from '@shared/errors/AppError';
 
 import '@shared/infra/typeorm';
@@ -20,6 +22,7 @@ app.use(cors());
 app.use('/files', express.static(tmpFolder));
 
 app.use(routes);
+app.use(errors());
 
 //Global exception handler
 // para funcionar, precisa instalar yarn add express-async-errors e chama após o express

@@ -6,11 +6,13 @@ import AvatarController from '@modules/users/infra/http/controllers/AvatarContro
 import verifyAuthentication from '@modules/users/infra/http/middlewares/verifyAuthentication';
 import fileUpload from '@config/upload';
 
+import { createUser } from '@modules/users/infra/http/validations/users';
+
 const usersRoutes = Router();
 const usersController = new UsersController();
 const avatarController = new AvatarController();
 
-usersRoutes.post('/', usersController.create);
+usersRoutes.post('/', createUser, usersController.create);
 
 usersRoutes.patch(
   '/avatar',
