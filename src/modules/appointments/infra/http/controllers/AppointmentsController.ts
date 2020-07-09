@@ -9,14 +9,12 @@ export default class AppointmentsController {
     const { date, provider_id } = req.body;
     const user_id = req.user.id;
 
-    const parsedDate = parseISO(date);
-
     const createAppointment = container.resolve(CreateAppointmentService); // para injeção de dependência funcionar
 
     const appointment = await createAppointment.execute({
       provider_id,
       user_id,
-      date: parsedDate,
+      date,
     });
 
     return res.json(appointment);
