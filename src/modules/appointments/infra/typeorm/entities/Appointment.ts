@@ -4,7 +4,7 @@ import {
   PrimaryGeneratedColumn,
   CreateDateColumn,
   UpdateDateColumn,
-  ManyToMany,
+  ManyToOne,
   JoinColumn,
 } from 'typeorm';
 
@@ -19,7 +19,7 @@ class Appointment {
   provider_id: string;
 
   // Relacionamento
-  @ManyToMany(() => User)
+  @ManyToOne(() => User)
   @JoinColumn({ name: 'provider_id' })
   provider: User;
 
@@ -27,7 +27,7 @@ class Appointment {
   user_id: string;
 
   // Relacionamento
-  @ManyToMany(() => User)
+  @ManyToOne(() => User)
   @JoinColumn({ name: 'user_id' })
   user: User;
 
