@@ -7,3 +7,6 @@ tmp/*
 !tmp/.gitkeep
 .env
 ormconfig.json
+
+coverage
+dist/
