@@ -1,6 +1,6 @@
 import { Segments, Joi, celebrate } from 'celebrate';
 
-export const createPizza = celebrate({
+export const updateProfile = celebrate({
   [Segments.BODY]: Joi.object({
     name: Joi.string().required(),
     email: Joi.string().email().required(),
