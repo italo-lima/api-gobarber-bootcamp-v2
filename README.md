@@ -2,7 +2,7 @@
 
 :star: API desenvolvida com Typescript + SOLID + DDD + Docker + Postgres + TypeOrm
 
-:arrow_right: Status: Finished :check:
+:arrow_right: Status: Finished :heavy_check_mark:
 
 :triangular_flag_on_post: Descrição: API para realizar gerenciamento de agendamentos para barbearia
 
